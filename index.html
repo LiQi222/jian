@@ -677,12 +677,12 @@
             chef: {
                 title: "厨师模拟器", recipeLabel: "选择你的菜谱:", historyTitle: "烹饪日志", cardPoolTitle: "工艺仓库", deckTitle: "工艺配置", startButton: "开始烹饪", logTitle: "烹饪日志", againButton: "再次烹饪", historyKey: "chefHistory",
                 recipes: {
-                    "圆面包": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [6, 8], strategies: { high: ["慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "火候掌握"], burst: ["慢炖", "火候掌握", "调味"], recommended: 'high' } },
-                    "烤薄饼": { slots: 4, description: "每次生产可配置4张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [15, 25], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握"], burst: ["慢炖", "慢炖", "火候掌握", "调味"], recommended: 'high' } },
-                    "吐司": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [101, 159], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
-                    "香辣面包": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [372, 448, 635], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'stable' } },
-                    "盐渍葡萄干": { slots: 4, description: "切割始终获得最高分，每次生产可配4张卡牌", special: "max_cutting", difficulty: "精英", rarityKey: "elite", ratings: [344, 440, 462, 647], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握"], burst: ["切割", "切割", "切割", "调味"], recommended: 'high' } },
-                    "葡萄果醋": { slots: 6, description: "每次生产可配置6张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [1070, 1270, 1420, 1740], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "火候掌握"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "调味"], recommended: 'high' } }
+                    "圆面包": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [6, 8], strategies: { high: ["慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "切割"], burst: ["火候掌握", "火候掌握", "调味"], recommended: 'high' } },
+                    "烤薄饼": { slots: 4, description: "每次生产可配置4张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [15, 25], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
+                    "吐司": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [101, 159], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
+                    "香辣面包": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [372, 448, 635], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
+                    "盐渍葡萄干": { slots: 4, description: "切割始终获得最高分，每次生产可配4张卡牌", special: "max_cutting", difficulty: "精英", rarityKey: "elite", ratings: [344, 440, 462, 647], strategies: { high: ["切割", "切割", "切割", "调味"], stable: ["慢炖", "火候掌握", "切割", "切割"], burst: ["切割", "切割", "切割", "调味"], recommended: 'burst' } },
+                    "葡萄果醋": { slots: 6, description: "每次生产可配置6张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [1070, 1270, 1420, 1740], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "调味"], recommended: 'high' } }
                 },
                 icons: { fire: `<svg viewBox="0 0 24 24"><path d="M13.04 1.23C11.93 2.66 11.25 4.5 11.25 6.5c0 3.59 2.91 6.5 6.5 6.5 1.08 0 2.09-.26 3-.73-.23 3.3-2.11 6.2-4.75 7.73-3.21 1.88-7.29 1.15-9.64-1.2-2.35-2.35-3.08-6.43-1.2-9.64C7.04 6.78 9.94 4.9 13.24 4.67c-.2-.93-.4-1.87-.2-2.73.08-.34.2-.67.4-.91z"/></svg>`, knife: `<svg viewBox="0 0 24 24"><path d="M14.29,1.71a1,1,0,0,0-1.41,0L3.29,11.29a1,1,0,0,0,0,1.41l8,8a1,1,0,0,0,1.41,0l9.59-9.59a1,1,0,0,0,0-1.41ZM12.59,19.59L5.41,12.41,14.71,3.12l7.17,7.17Z"/></svg>`, spark: `<svg viewBox="0 0 24 24"><path d="M12 2l2.35 7.16h7.65l-6.18 4.48 2.36 7.16-6.18-4.48-6.18 4.48 2.36-7.16-6.18-4.48h7.65L12 2z"/></svg>`, pot: `<svg viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/></svg>` },
                 library: {
@@ -1198,22 +1198,26 @@
                         } else if (name === "点火") {
                             const target = Math.random() < 0.5 ? 'purple' : 'blue'; if (target === 'purple') { tempLog += `   -> 注入燃料! 💜 紫色分数 ${purple} x 2 = ${purple*2}\n`; purple *= 2; } else { tempLog += `   -> 注入燃料! 💙 蓝色分数 ${blue} x 2 = ${blue*2}\n`; blue *= 2; }
                         } else if (name === "火候掌握") {
-                            const applyFireControl = () => {
+                            let trigger = true;
+                            while(trigger) {
                                 let bonus = 3;
                                 const target = Math.random() < 0.5 ? 'purple' : 'blue';
                                 if (target === 'purple') { purple += bonus; tempLog += `   -> 作用于随机颜色: 💜+${bonus}\n`; } 
                                 else { blue += bonus; tempLog += `   -> 作用于随机颜色: 💙+${bonus}\n`; }
-                            };
-                            applyFireControl();
-                            if (Math.random() < 0.5) {
-                                tempLog += `   -> 💥 火候绝佳! 重复触发一次!\n`;
-                                applyFireControl();
-                            }
-                            if (slowCookCount > 0) {
-                                for(let i = 0; i < slowCookCount; i++) {
-                                    purple += 2;
-                                    blue += 2;
-                                    tempLog += `   -> 🍲 慢炖效果触发! 全部颜色+2\n`;
+
+                                if (slowCookCount > 0) {
+                                    for(let i = 0; i < slowCookCount; i++) {
+                                        purple += 2;
+                                        blue += 2;
+                                        tempLog += `   -> 🍲 慢炖效果触发! 全部颜色+2\n`;
+                                    }
+                                }
+                                
+                                if (Math.random() < 0.5) {
+                                    tempLog += `   -> 💥 火候绝佳! 重复触发一次!\n`;
+                                    trigger = true;
+                                } else {
+                                    trigger = false;
                                 }
                             }
                         } else if (name === "切割") {
