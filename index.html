@@ -374,36 +374,20 @@
             padding: 10px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             cursor: pointer;
             overflow: hidden;
         }
-        .history-item-cards {
-            flex-grow: 1;
-            flex-shrink: 1;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
+        .history-item-cards-text {
+            flex: 1;
             min-width: 0;
-        }
-         .history-item-cards[data-count-gt-3="true"] {
-            overflow-x: auto;
-        }
-        .history-item-cards::-webkit-scrollbar {
-            height: 4px;
-        }
-        .history-item-cards::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .history-item-cards::-webkit-scrollbar-thumb {
-            background-color: var(--surface-color);
-            border-radius: 2px;
-        }
-        .history-item-cards .card {
-            transform: scale(0.5);
-            margin: -25px -20px;
-            pointer-events: none;
-            flex-shrink: 0;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            padding-right: 15px;
+            text-align: left;
+            line-height: 1.5;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .history-item-score {
             font-size: 1.1em;
@@ -415,6 +399,7 @@
             flex-direction: column;
             align-items: flex-end;
             padding-left: 10px;
+            margin-left: auto;
         }
         .history-item-stars {
             font-size: 0.9em;
@@ -1058,18 +1043,17 @@
                     const headerEl = document.createElement('div');
                     headerEl.className = 'history-item-header';
                     
-                    const cardsDiv = document.createElement('div');
-                    cardsDiv.className = 'history-item-cards';
-                    if (record.deck.length > 3) {
-                        cardsDiv.dataset.countGt3 = "true";
-                    }
+                    const deckSummary = {};
                     record.deck.forEach(cardName => {
-                        const cardInfo = currentRole.library[cardName];
-                        if (cardInfo) {
-                            const cardEl = createCardElement(cardInfo, 'history');
-                            cardsDiv.appendChild(cardEl);
-                        }
+                        deckSummary[cardName] = (deckSummary[cardName] || 0) + 1;
                     });
+                    const summaryString = Object.entries(deckSummary)
+                        .map(([name, count]) => `${name}×${count}`)
+                        .join('，');
+
+                    const cardsDiv = document.createElement('div');
+                    cardsDiv.className = 'history-item-cards-text';
+                    cardsDiv.textContent = summaryString;
 
                     const scoreDiv = document.createElement('div');
                     scoreDiv.className = 'history-item-score';
@@ -1169,7 +1153,7 @@
                             } else if (focusNext) {
                                 purple += bonus;
                                 blue += bonus;
-                                tempLog += `   -> 💥 聚能生效! 作用于双色: 💜+${bonus}, 💙+${bonus}\n`;
+                                tempLog += `   -> � 聚能生效! 作用于双色: 💜+${bonus}, 💙+${bonus}\n`;
                                 focusNext = false;
                             } else {
                                 const target = Math.random() < 0.5 ? 'purple' : 'blue';
