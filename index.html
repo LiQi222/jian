@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>职业模拟器 - 锻造、烹饪与炼金</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap');
 
         :root {
-            --bg-color: #1d1f23;
-            --surface-color: #282a30;
-            --primary-color: #ffae42;
-            --primary-dark: #ff8c00;
-            --text-color: #e0e0e0;
-            --text-muted: #9e9e9e;
-            --craftsman-glow: rgba(255, 165, 0, 0.8);
-            --rarity-rare-bg: #3949ab; /* Indigo for Rare */
-            --rarity-rare-plus-bg: linear-gradient(45deg, #3949ab, #8e24aa); /* Indigo to Purple for Rare+ */
-            --rarity-elite-bg: #8e24aa; /* Purple for Elite */
-            --rarity-elite-plus-bg: linear-gradient(45deg, #8e24aa, #ffd700); /* Purple to Gold for Elite+ */
-            --score-0: #ef5350;
-            --score-1: #66bb6a;
-            --score-2: #42a5f5;
-            --score-3: #ab47bc;
-            --score-4: #ffd700;
+            --bg-color: #1a1a2e;
+            --surface-color: #16213e;
+            --primary-color: #0f3460;
+            --primary-dark: #e94560;
+            --accent-color: #5372f0;
+            --text-color: #e0f2f1;
+            --text-muted: #a7c5c5;
+            --craftsman-glow: rgba(233, 69, 96, 0.7);
+            --rarity-rare-bg: #5372f0; 
+            --rarity-rare-plus-bg: linear-gradient(120deg, #5372f0, #a594f9, #5372f0);
+            --rarity-elite-bg: #a594f9;
+            --rarity-elite-plus-bg: linear-gradient(120deg, #a594f9, #ff7e5f, #a594f9);
+            --score-0: #e94560;
+            --score-1: #859900;
+            --score-2: #268bd2;
+            --score-3: #d33682;
+            --score-4: #b58900;
         }
 
         body {
-            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+            font-family: 'Nunito', 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
@@ -60,19 +61,18 @@
         }
 
         .spark {
-            background-color: var(--primary-color);
+            background-color: #ff8484;
             animation-name: rise;
         }
         
         .bubble {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(131, 148, 150, 0.2);
             animation-name: bubble-rise;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(131, 148, 150, 0.3);
         }
 
         .alchemy-particle {
             animation-name: alchemy-float;
-            box-shadow: 0 0 8px, 0 0 12px;
         }
 
         @keyframes rise {
@@ -99,31 +99,43 @@
         .container {
             width: 100%;
             max-width: 1100px;
-            background: rgba(40, 42, 48, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background: rgba(22, 33, 62, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), 0 0 25px rgba(255, 174, 66, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 25px rgba(233, 69, 96, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-height: 95vh;
             overflow-y: auto;
         }
 
         h1, h2, h3 {
             text-align: center;
-            color: var(--primary-color);
-            text-shadow: 0 0 8px var(--craftsman-glow);
+            color: var(--primary-dark);
+            text-shadow: 0 0 10px var(--craftsman-glow);
         }
         
         h1 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             margin-bottom: 25px;
+            font-family: 'ZCOOL KuaiLe', sans-serif;
+            animation: glow 2s ease-in-out infinite alternate;
         }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #e94560, 0 0 20px #e94560, 0 0 30px #e94560;
+            }
+            to {
+                text-shadow: 0 0 20px #e94560, 0 0 30px #ff7e5f, 0 0 40px #ff7e5f;
+            }
+        }
+        
         h3 {
             font-size: 1.4em;
             color: var(--text-color);
             text-shadow: none;
-            border-bottom: 1px solid var(--surface-color);
+            border-bottom: 1px solid var(--primary-color);
             padding-bottom: 8px;
             margin-bottom: 15px;
         }
@@ -148,29 +160,31 @@
             flex-grow: 1;
         }
         .switch-role-button {
-            background: var(--surface-color);
-            color: var(--text-muted);
-            border: 1px solid var(--surface-color);
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: 1px solid var(--primary-color);
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s;
+            font-weight: 600;
         }
         .switch-role-button:hover {
-            background: var(--bg-color);
-            color: var(--text-color);
-            border-color: var(--text-muted);
+            background: var(--primary-dark);
+            color: #fff;
+            border-color: var(--primary-dark);
         }
 
         #role-selection-screen { text-align: center; }
         .role-options { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
         .role-card {
-            background: var(--surface-color); padding: 30px; border-radius: 15px;
+            background: var(--surface-color); padding: 30px; border-radius: 20px;
             cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .role-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .role-card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.3); }
         .role-icon { font-size: 4em; }
-        .role-name { font-size: 1.5em; font-weight: 600; margin-top: 15px; }
+        .role-name { font-size: 1.5em; font-weight: 700; margin-top: 15px; }
         .role-actions { margin-top: 30px; display: flex; justify-content: center; gap: 15px; }
 
         .main-layout { display: flex; gap: 30px; flex-wrap: wrap; }
@@ -178,58 +192,74 @@
         .right-panel { flex: 2; min-width: 450px; }
 
         .setup-section {
-            background: var(--surface-color); padding: 20px; border-radius: 12px;
-            margin-bottom: 20px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            background: rgba(15, 52, 96, 0.5); padding: 20px; border-radius: 16px;
+            margin-bottom: 20px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
-        .recipe-selector label { font-size: 1.2em; margin-bottom: 10px; display: block; }
+        .recipe-selector label { font-size: 1.2em; margin-bottom: 10px; display: block; font-weight: 600; }
 
         .custom-select-container { position: relative; }
         #custom-select-trigger {
-            width: 100%; padding: 12px; border-radius: 8px; background-color: var(--bg-color);
-            color: var(--text-color); border: 1px solid rgba(255,255,255,0.1); font-size: 1em;
+            width: 100%; padding: 12px; border-radius: 12px; background-color: var(--surface-color);
+            color: var(--text-color); border: 1px solid var(--primary-color); font-size: 1em;
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
         }
         #custom-select-trigger::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s ease; }
         .custom-select-container.open #custom-select-trigger::after { transform: rotate(180deg); }
         #custom-select-options {
-            position: absolute; top: 105%; left: 0; width: 100%; background-color: var(--bg-color);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; z-index: 10;
+            position: absolute; top: 105%; left: 0; width: 100%; background-color: var(--surface-color);
+            border: 1px solid var(--primary-color); border-radius: 12px; z-index: 10;
             overflow: hidden; transform-origin: top; transition: transform 0.3s ease, opacity 0.3s ease;
             transform: scaleY(0); opacity: 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .custom-select-container.open #custom-select-options { transform: scaleY(1); opacity: 1; }
         .custom-select-option {
             padding: 12px; cursor: pointer; transition: background-color 0.2s;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .custom-select-option:hover { background-color: var(--surface-color); }
-        .recipe-label { font-weight: 600; padding: 3px 8px; border-radius: 6px; font-size: 0.8em; color: #fff; }
+        .custom-select-option:hover { background-color: var(--primary-color); }
+        
+        .recipe-label { 
+            font-weight: 600; 
+            padding: 4px 10px; 
+            border-radius: 8px; 
+            font-size: 0.8em; 
+            color: #fff; 
+            background-size: 300% 100%;
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
         
         #recipe-details { margin-top: 15px; }
         #recipe-difficulty {
             font-weight: 600; padding: 5px 12px; border-radius: 8px; display: inline-block;
-            font-size: 0.9em; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 0.9em; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
-        .rarity-rare { background-color: var(--rarity-rare-bg); }
+        .rarity-rare { background-image: linear-gradient(120deg, var(--rarity-rare-bg) 40%, #aab9f9 50%, var(--rarity-rare-bg) 60%); }
         .rarity-rare-plus { background-image: var(--rarity-rare-plus-bg); }
-        .rarity-elite { background-color: var(--rarity-elite-bg); }
+        .rarity-elite { background-image: linear-gradient(120deg, var(--rarity-elite-bg) 40%, #d1c4f9 50%, var(--rarity-elite-bg) 60%); }
         .rarity-elite-plus { background-image: var(--rarity-elite-plus-bg); }
 
         
         #recipe-description { font-size: 0.95em; color: var(--text-muted); margin-top: 10px; padding: 0 5px; }
 
         .strategy-section {
-            background-color: rgba(0,0,0,0.2); border-left: 4px solid var(--primary-color);
-            padding: 12px 15px; margin-top: 15px; border-radius: 5px;
+            background-color: rgba(0,0,0,0.1); border-left: 4px solid var(--primary-color);
+            padding: 12px 15px; margin-top: 15px; border-radius: 8px;
         }
         .strategy-tabs { display: flex; gap: 10px; margin-bottom: 10px; }
         .strategy-tab {
             background: none; border: 1px solid var(--text-muted); color: var(--text-muted);
             padding: 5px 12px; border-radius: 15px; cursor: pointer; transition: all 0.2s;
         }
-        .strategy-tab.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); font-weight: 600; }
+        .strategy-tab.active { background-color: var(--primary-dark); color: #fff; border-color: var(--primary-dark); font-weight: 600; }
         #strategy-display { display: flex; flex-direction: column; align-items: center; }
         #strategy-cards-container { display: flex; justify-content: center; flex-wrap: wrap; }
         #strategy-cards-container .card { transform: scale(0.7); margin: -15px -10px; pointer-events: none; }
@@ -242,19 +272,25 @@
 
         .card-selection-area { display: flex; flex-direction: column; gap: 20px; }
         .card-list {
-            background-color: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px;
-            min-height: 220px; border: 1px dashed var(--text-muted); perspective: 1000px;
+            background-color: rgba(0,0,0,0.1); padding: 15px; border-radius: 16px;
+            min-height: 220px; border: 2px dashed var(--primary-color); perspective: 1000px;
         }
         #card-pool-container, #deck-config-container { display: flex; flex-wrap: wrap; gap: 10px; }
 
         .card {
-            border-radius: 10px; cursor: pointer; user-select: none;
+            border-radius: 16px; cursor: pointer; user-select: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.5); display: flex; flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.2); display: flex; flex-direction: column;
             justify-content: space-between; align-items: center; width: 100px; height: 130px;
             padding: 10px 5px; box-sizing: border-box;
-            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
             position: relative; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .card.type-craftsman {
+            box-shadow: 0 0 10px 2px var(--primary-dark), inset 0 0 5px rgba(233, 69, 96, 0.5);
+            border-color: var(--primary-dark);
         }
         
         @keyframes shine { from { left: -80%; } to { left: 130%; } }
@@ -263,37 +299,31 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transform: skewX(-25deg); animation: shine 0.7s ease;
         }
-        .card:hover { transform: translateY(-10px) rotateX(10deg) rotateY(-5deg) scale(1.1); box-shadow: 0 15px 25px rgba(0,0,0,0.4); }
+        .card:hover { transform: translateY(-10px) rotateX(10deg) rotateY(-5deg) scale(1.1); box-shadow: 0 15px 25px rgba(0,0,0,0.3); }
         
         .card-icon { width: 40%; height: 40%; display: flex; align-items: center; justify-content: center; }
-        .card-icon svg { width: 100%; height: 100%; fill: rgba(255,255,255,0.8); filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); }
-        .card-name { font-weight: 600; font-size: 1em; line-height: 1.2; }
+        .card-icon svg { width: 100%; height: 100%; fill: rgba(255,255,255,0.8); filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2)); }
+        .card-name { font-weight: 700; font-size: 1em; line-height: 1.2; }
         .card-desc { font-size: 0.7em; color: var(--text-muted); line-height: 1.3; }
 
-        @keyframes molten-core {
-            0% { box-shadow: 0 0 8px 2px #ff8c00, inset 0 0 5px 1px #ffae42; }
-            50% { box-shadow: 0 0 16px 5px #ffae42, inset 0 0 10px 3px #ff8c00; }
-            100% { box-shadow: 0 0 8px 2px #ff8c00, inset 0 0 5px 1px #ffae42; }
-        }
         @keyframes card-enter { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
         .card-enter-active { animation: card-enter 0.3s ease-out; }
 
-        .card.forging, .card.skilled-forging, .card.fire-control { border: 1px solid var(--primary-dark); animation: molten-core 2.5s infinite ease-in-out; }
-        .card.forging:hover, .card.skilled-forging:hover, .card.fire-control:hover { box-shadow: 0 15px 30px rgba(255, 140, 0, 0.5); }
-        .card.forging { background-color: #a1583b; } 
-        .card.skilled-forging { background-color: #d15532; }
-        .card.ignition { background-color: #b71c1c; }
-        .card.heating-up { background-color: #ff6f00; }
-        .card.focusing-energy { background-color: #5e35b1; }
-        .card.fire-control { background-color: #d15532; }
-        .card.cutting { background-color: #0277bd; }
-        .card.seasoning { background-color: #b71c1c; }
-        .card.slow-cook { background-color: #5e35b1; }
+        .card.forging, .card.skilled-forging, .card.fire-control { border-color: #cb4b16; animation: none; }
+        .card.forging:hover, .card.skilled-forging:hover, .card.fire-control:hover { box-shadow: 0 15px 30px rgba(203, 75, 22, 0.3); }
+        .card.forging { background-color: #3a2d27; } 
+        .card.skilled-forging { background-color: #4a2f25; }
+        .card.ignition { background-color: #4d1f1f; }
+        .card.heating-up { background-color: #523a28; }
+        .card.focusing-energy { background-color: #312a4e; }
+        .card.fire-control { background-color: #4a2f25; }
+        .card.cutting { background-color: #283d4e; }
+        .card.seasoning { background-color: #4d1f1f; }
+        .card.slow-cook { background-color: #312a4e; }
         
-        #deck-config-container .card.forging, #deck-config-container .card.skilled-forging, #deck-config-container .card.fire-control { animation: none; }
         .empty-card-slot {
             background: transparent;
-            border: 2px dashed var(--surface-color);
+            border: 2px dashed var(--primary-color);
             cursor: default;
         }
         .empty-card-slot:hover { transform: none; box-shadow: none; }
@@ -302,41 +332,43 @@
         #start-forge-btn {
             display: block; width: 100%; padding: 18px; font-size: 1.5em; font-weight: 700;
             color: #fff; background: linear-gradient(45deg, var(--primary-dark), var(--primary-color));
-            border: none; border-radius: 10px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 20px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            border: none; border-radius: 16px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
         }
-        #start-forge-btn:disabled { background: #546e7a; cursor: not-allowed; color: #90a4ae; box-shadow: none; }
-        #start-forge-btn:not(:disabled):hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(255, 140, 0, 0.5); }
+        #start-forge-btn:disabled { background: #2c3e50; cursor: not-allowed; color: #7f8c8d; box-shadow: none; }
+        #start-forge-btn:not(:disabled):hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5); }
         #start-forge-btn:not(:disabled):active { transform: translateY(0); }
         
         #game-screen { display: none; }
         .score-display { display: flex; justify-content: space-around; margin: 20px 0; font-size: clamp(1.5em, 5vw, 2em); font-weight: bold; }
         .score-display > div > span { display: inline-block; transition: transform 0.2s ease; }
-        .purple-score { color: #c398ff; }
-        .blue-score { color: #8cb9ff; }
+        .purple-score { color: #a594f9; }
+        .blue-score { color: #5372f0; }
         
         @keyframes score-update-animation {
-            0% { transform: scale(1); } 50% { transform: scale(1.5); color: #fff; text-shadow: 0 0 10px #fff; } 100% { transform: scale(1); }
+            0% { transform: scale(1); } 50% { transform: scale(1.5); color: var(--primary-dark); text-shadow: 0 0 10px var(--primary-dark); } 100% { transform: scale(1); }
         }
         @keyframes final-score-pop { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
         .score-updated { animation: score-update-animation 0.5s ease-out; }
         #final-score.score-updated { animation: final-score-pop 0.3s ease-out; }
 
         #log {
-            background-color: #1e2124; height: 250px; overflow-y: auto; border-radius: 5px;
-            padding: 15px; font-family: 'Courier New', Courier, monospace; border: 1px solid #40444b;
+            background-color: #0f3460; height: 250px; overflow-y: auto; border-radius: 8px;
+            padding: 15px; font-family: 'Courier New', Courier, monospace; border: 1px solid var(--primary-color);
             margin-bottom: 20px; white-space: pre-wrap; font-size: 0.9em;
+            color: #a7c5c5;
         }
         
         #final-score {
-            font-size: clamp(2em, 7vw, 2.5em); font-weight: bold; color: #4caf50;
-            text-shadow: 0 0 10px #4caf50; display: inline-block; transition: color 0.3s;
+            font-size: clamp(2em, 7vw, 2.5em); font-weight: bold; color: #859900;
+            text-shadow: 0 0 10px #859900; display: inline-block; transition: color 0.3s;
         }
         #final-score-container { text-align: center; }
 
         .star-rating { text-align: center; font-size: 2.5em; margin-top: -10px; margin-bottom: 20px; }
-        .star { color: #444; transition: color 0.3s, transform 0.3s; display: inline-block; position: relative;}
-        .star.filled { color: #ffd700; text-shadow: 0 0 5px #ffd700; }
+        .star { color: #2c3e50; transition: color 0.3s, transform 0.3s; display: inline-block; position: relative;}
+        .star.filled { color: #b58900; text-shadow: 0 0 5px #b58900; }
         
         @keyframes star-pop-in { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.5); opacity: 1; } 100% { transform: scale(1); } }
         .star.newly-filled { animation: star-pop-in 0.5s ease-out; }
@@ -354,7 +386,7 @@
             transform: translateX(-50%);
             font-size: 0.4em;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary-dark);
             text-shadow: 0 0 5px white;
             animation: up-and-fade 1s ease-out forwards;
         }
@@ -362,32 +394,33 @@
         .action-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
         .action-buttons button {
             padding: 12px 25px; font-size: 1.2em; font-weight: 600; cursor: pointer;
-            border-radius: 8px; border: none; transition: all 0.2s;
+            border-radius: 12px; border: none; transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         #forge-again-btn { background-color: var(--primary-dark); color: #fff; }
         #forge-again-btn:hover { background-color: var(--primary-color); transform: translateY(-2px); }
-        #change-recipe-btn { background-color: #607d8b; color: #fff; }
-        #change-recipe-btn:hover { background-color: #78909c; transform: translateY(-2px); }
-        #reset-btn { background-color: #7289da; color: #fff; }
-        #reset-btn:hover { background-color: #8c9eff; transform: translateY(-2px); }
+        #change-recipe-btn { background-color: #93a1a1; color: #fff; }
+        #change-recipe-btn:hover { background-color: #839496; transform: translateY(-2px); }
+        #reset-btn { background-color: #6c71c4; color: #fff; }
+        #reset-btn:hover { background-color: #5860a5; transform: translateY(-2px); }
         
         /* History Section */
         .history-header { display: flex; justify-content: space-between; align-items: center; }
         .delete-btn {
-            background: none; border: 1px solid #c62828; color: #c62828;
-            padding: 4px 10px; font-size: 0.8em; border-radius: 5px; cursor: pointer;
+            background: none; border: 1px solid #dc322f; color: #dc322f;
+            padding: 4px 10px; font-size: 0.8em; border-radius: 8px; cursor: pointer;
             transition: background-color 0.2s, color 0.2s;
         }
-        .delete-btn:hover { background-color: #c62828; color: #fff; }
+        .delete-btn:hover { background-color: #dc322f; color: #fff; }
         #history-list { max-height: 200px; overflow-y: auto; margin-top: 10px; padding-right: 5px; }
         .history-item {
             background: rgba(0,0,0,0.2);
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 10px;
-            border-left: 3px solid var(--surface-color);
+            border-left: 4px solid var(--primary-color);
         }
         .history-item-header {
-            padding: 10px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             cursor: pointer;
@@ -419,7 +452,7 @@
         }
         .history-item-stars {
             font-size: 0.9em;
-            color: var(--primary-color);
+            color: var(--primary-dark);
             margin-top: 2px;
         }
         .history-details {
@@ -433,37 +466,51 @@
         .history-log {
             background: var(--bg-color);
             padding: 10px;
-            margin: 0 10px 10px;
-            border-radius: 5px;
+            margin: 0 15px 15px;
+            border-radius: 8px;
             font-size: 0.8em;
             white-space: pre-wrap;
             font-family: 'Courier New', Courier, monospace;
             max-height: 200px;
             overflow-y: auto;
-            border: 1px solid var(--surface-color);
+            border: 1px solid var(--primary-color);
         }
 
 
         /* Confirmation Modal */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
             display: flex; justify-content: center; align-items: center;
             z-index: 100;
+            animation: fadeIn 0.3s ease-out;
         }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .modal-box {
-            background: var(--surface-color); padding: 30px; border-radius: 15px;
-            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: var(--surface-color); padding: 30px; border-radius: 16px;
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: scaleUp 0.3s ease-out;
         }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
         #modal-message { font-size: 1.2em; margin-bottom: 25px; }
         .modal-buttons { display: flex; gap: 15px; justify-content: center; }
         .modal-btn {
-            padding: 10px 25px; border-radius: 8px; border: none;
+            padding: 10px 25px; border-radius: 12px; border: none;
             font-size: 1em; font-weight: 600; cursor: pointer; transition: transform 0.2s;
         }
         .modal-btn:hover { transform: scale(1.05); }
-        .modal-btn.confirm { background-color: #c62828; color: #fff; }
-        .modal-btn.cancel { background-color: #4f4f4f; color: var(--text-color); }
+        .modal-btn.confirm { background-color: #dc322f; color: #fff; }
+        .modal-btn.cancel { background-color: var(--primary-color); color: var(--text-color); }
 
         /* Handbook */
         #handbook-nav {
@@ -473,18 +520,18 @@
             margin-bottom: 20px;
         }
         .handbook-nav-btn {
-            background: var(--surface-color);
-            color: var(--text-muted);
-            border: 1px solid var(--surface-color);
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: 1px solid var(--primary-color);
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s;
         }
         .handbook-nav-btn.active {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-            border-color: var(--primary-color);
+            background-color: var(--primary-dark);
+            color: #fff;
+            border-color: var(--primary-dark);
             font-weight: 600;
         }
         #handbook-nav .nav-spacer {
@@ -502,7 +549,7 @@
         .handbook-recipe-item {
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid var(--surface-color);
+            border-bottom: 1px solid var(--primary-color);
         }
         .handbook-strategy-container { margin-top: 10px; }
         .handbook-recipe-tabs { display: flex; gap: 8px; margin-bottom: 10px; }
@@ -512,7 +559,7 @@
             font-size: 0.8em;
         }
         .handbook-recipe-tab.active {
-            background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); font-weight: 600;
+            background-color: var(--primary-dark); color: #fff; border-color: var(--primary-dark); font-weight: 600;
         }
         .handbook-recipe-deck { display: flex; }
         .handbook-section p {
@@ -668,13 +715,13 @@
                     "铜制刻刀": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [15, 28], strategies: { high: ["锻造", "锻造", "锻造"], stable: ["锻造", "锻造", "熟练锻造"], burst: ["锻造", "锻造", "点火"], recommended: 'high' } },
                     "铜制面罩": { slots: 4, description: "每次生产可配置4张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [24, 35], strategies: { high: ["锻造", "锻造", "升温", "熟练锻造"], stable: ["锻造", "锻造", "锻造", "熟练锻造"], burst: ["锻造", "锻造", "升温", "点火"], recommended: 'high' } },
                     "雕花木匣": { slots: 4, description: "首次打出的【锻造】卡牌将作用于全部颜色，每次可配置4张卡牌", special: "first_forge_focus", difficulty: "精英", rarityKey: "elite", ratings: [152, 180, 182, 190], strategies: { high: ["锻造", "升温", "熟练锻造", "熟练锻造"], stable: ["熟练锻造", "熟练锻造", "熟练锻造", "锻造"], burst: ["锻造", "升温", "升温", "点火"], recommended: 'stable' } },
-                    "超薄刻刀": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [46, 86], strategies: { high: ["锻造", "锻造", "升温", "升温", "熟练锻造"], stable: ["锻造", "锻造", "锻造", "升温", "聚能"], burst: ["锻造", "锻造", "升温", "熟练锻造", "点火"], recommended: 'high' } },
+                    "超薄刻刀": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [46, 86], strategies: { high: ["锻造", "锻造", "升温", "升温", "熟练锻造"], stable: ["锻造", "锻造", "锻造", "锻造", "聚能"], burst: ["锻造", "锻造", "升温", "熟练锻造", "点火"], recommended: 'high' } },
                     "木箭": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [108, 130, 163], strategies: { high: ["锻造", "锻造", "升温", "升温", "熟练锻造"], stable: ["锻造", "锻造", "锻造", "锻造", "锻造"], burst: ["锻造", "锻造", "升温", "熟练锻造", "点火"], recommended: 'high' } },
                     "保温铜锅": { slots: 5, description: "熟练锻造有30%的概率额外触发1次", special: "skilled_forge_echo", difficulty: "精英", rarityKey: "elite", ratings: [566, 675, 797, 1040], strategies: { high: ["锻造", "升温", "升温", "熟练锻造", "熟练锻造"], stable: ["锻造", "升温", "聚能", "熟练锻造", "熟练锻造"], burst: ["锻造", "升温", "熟练锻造", "熟练锻造", "点火"], recommended: 'high' } }
                 },
                 icons: { anvil: `<svg viewBox="0 0 24 24"><path d="M22.39 10.44l-1.42-1.43c-.59-.58-1.55-.58-2.12 0l-1.58 1.58-1.29-1.29-2.2-2.2c-.39-.39-1.02-.39-1.41 0l-1.42 1.42c-.39.39-.39 1.02 0 1.41l2.2 2.2 1.29 1.29-9.2 9.2c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l9.2-9.2 1.58 1.58c.29.29.68.44 1.06.44s.77-.15 1.06-.44l1.42-1.42c.58-.59.58-1.55 0-2.12zM5.21 10.71L2.41 7.9c-1.17-1.17-1.17-3.07 0-4.24 1.17-1.17 3.07-1.17 4.24 0l2.81 2.81-4.25 4.24z"/></svg>`, fire: `<svg viewBox="0 0 24 24"><path d="M13.04 1.23C11.93 2.66 11.25 4.5 11.25 6.5c0 3.59 2.91 6.5 6.5 6.5 1.08 0 2.09-.26 3-.73-.23 3.3-2.11 6.2-4.75 7.73-3.21 1.88-7.29 1.15-9.64-1.2-2.35-2.35-3.08-6.43-1.2-9.64C7.04 6.78 9.94 4.9 13.24 4.67c-.2-.93-.4-1.87-.2-2.73.08-.34.2-.67.4-.91z"/></svg>`, crystal: `<svg viewBox="0 0 24 24"><path d="M12 2L2 8.5v7L12 22l10-6.5v-7L12 2zm0 2.31L19.69 9 12 13.53 4.31 9 12 4.31zM4 10.08l7 4.38v5.23l-7-4.38v-5.23zm9 0v5.23l7-4.38v-5.23l-7 4.38z"/></svg>`, spark: `<svg viewBox="0 0 24 24"><path d="M12 2l2.35 7.16h7.65l-6.18 4.48 2.36 7.16-6.18-4.48-6.18 4.48 2.36-7.16-6.18-4.48h7.65L12 2z"/></svg>` },
                 library: {
-                    "锻造": { count: 3, name: "锻造", type: "craftsman", class: "forging", description: "随机颜色+5", icon: "anvil" }, "熟练锻造": { count: 3, name: "熟练锻造", type: "craftsman", class: "skilled-forging", description: "随机颜色+3，后续所有【熟练锻造】额外+3", icon: "anvil" },
+                    "锻造": { count: 3, name: "锻造", type: "craftsman", class: "forging", description: "随机颜色+5", icon: "anvil" }, "熟练锻造": { count: 3, name: "熟练锻造", type: "craftsman", class: "skilled-forging", description: "随机颜色+4，后续所有【熟练锻造】额外+3", icon: "anvil" },
                     "升温": { count: 2, name: "升温", type: "buff", class: "heating-up", description: "后续所有工匠牌效果+3", icon: "fire" }, "聚能": { count: 2, name: "聚能", type: "utility", class: "focusing-energy", description: "下一张工匠牌作用于所有颜色", icon: "crystal" },
                     "点火": { count: 1, name: "点火", type: "multiplier", class: "ignition", description: "随机颜色x2", icon: "spark" }
                 }
@@ -682,7 +729,7 @@
             chef: {
                 title: "厨师模拟器", recipeLabel: "选择你的菜谱:", historyTitle: "烹饪日志", cardPoolTitle: "工艺仓库", deckTitle: "工艺配置", startButton: "开始烹饪", logTitle: "烹饪日志", againButton: "再次烹饪", historyKey: "chefHistory",
                 recipes: {
-                    "圆面包": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [6, 8], strategies: { high: ["慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "切割"], burst: ["火候掌握", "火候掌握", "调味"], recommended: 'high' } },
+                    "圆面包": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [6, 8], strategies: { high: ["慢炖", "火候掌握", "火候掌握"], stable: ["切割", "切割", "火候掌握"], burst: ["火候掌握", "火候掌握", "调味"], recommended: 'high' } },
                     "烤薄饼": { slots: 4, description: "每次生产可配置4张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [15, 25], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
                     "吐司": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [101, 159], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
                     "香辣面包": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [372, 448, 635], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
@@ -700,8 +747,8 @@
             alchemist: {
                 title: "炼金师模拟器", recipeLabel: "选择你的配方:", historyTitle: "炼金日志", cardPoolTitle: "材料仓库", deckTitle: "炼金工艺", startButton: "开始炼金", logTitle: "炼金日志", againButton: "再次炼金", historyKey: "alchemistHistory",
                 recipes: {
-                    "萌芽药水": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [12, 27], strategies: { high: ["投料", "投料", "投料"], stable: ["投料", "投料", "研磨"], burst: ["投料", "投料", "蒸馏"], recommended: 'high' } },
-                    "安神花束": { slots: 6, description: "每次生产可配置6张卡牌", difficulty: "精英＋", rarityKey: "elite-plus", ratings: [518, 575, 637, 744], strategies: { high: ["投料", "投料", "投料", "魔力注入", "魔力注入", "蒸馏"], stable: ["投料", "投料", "投料", "研磨", "研磨", "研磨"], burst: ["投料", "投料", "投料", "蒸馏", "魔力注入", "魔力注入"], recommended: 'high' } }
+                    "萌芽药水": { slots: 3, description: "每次生产可配置3张卡牌", difficulty: "稀有", rarityKey: "rare", ratings: [12, 27], strategies: { high: ["投料", "研磨", "研磨"], stable: ["投料", "研磨", "研磨"], burst: ["投料", "投料", "蒸馏"], recommended: 'high' } },
+                    "安神花束": { slots: 6, description: "每次生产可配置6张卡牌", difficulty: "精英＋", rarityKey: "elite-plus", ratings: [518, 575, 637, 744], strategies: { high: ["投料", "投料", "投料", "魔力注入", "魔力注入", "蒸馏"], stable: ["投料", "投料", "投料", "研磨", "研磨", "魔力注入"], burst: ["投料", "投料", "投料", "蒸馏", "魔力注入", "魔力注入"], recommended: 'high' } }
                 },
                 icons: { pot: `<svg viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/></svg>`, crystal: `<svg viewBox="0 0 24 24"><path d="M12 2L2 8.5v7L12 22l10-6.5v-7L12 2zm0 2.31L19.69 9 12 13.53 4.31 9 12 4.31zM4 10.08l7 4.38v5.23l-7-4.38v-5.23zm9 0v5.23l7-4.38v-5.23l-7 4.38z"/></svg>`, fire: `<svg viewBox="0 0 24 24"><path d="M13.04 1.23C11.93 2.66 11.25 4.5 11.25 6.5c0 3.59 2.91 6.5 6.5 6.5 1.08 0 2.09-.26 3-.73-.23 3.3-2.11 6.2-4.75 7.73-3.21 1.88-7.29 1.15-9.64-1.2-2.35-2.35-3.08-6.43-1.2-9.64C7.04 6.78 9.94 4.9 13.24 4.67c-.2-.93-.4-1.87-.2-2.73.08-.34.2-.67.4-.91z"/></svg>`, spark: `<svg viewBox="0 0 24 24"><path d="M12 2l2.35 7.16h7.65l-6.18 4.48 2.36 7.16-6.18-4.48-6.18 4.48 2.36-7.16-6.18-4.48h7.65L12 2z"/></svg>` },
                 library: {
@@ -822,7 +869,7 @@
             currentRecipe = currentRole.recipes[recipeName];
             
             recipeDifficultyEl.textContent = currentRecipe.difficulty;
-            recipeDifficultyEl.className = '';
+            recipeDifficultyEl.className = 'recipe-label';
             recipeDifficultyEl.classList.add(`rarity-${currentRecipe.rarityKey}`);
             recipeDescriptionEl.textContent = currentRecipe.description;
 
@@ -954,9 +1001,10 @@
 
         function createCardElement(cardInfo, location, uniqueId, roleContext = currentRole) {
             const el = document.createElement('div');
-            el.className = `card ${cardInfo.class}`;
+            el.className = `card ${cardInfo.class} type-${cardInfo.type}`;
             el.dataset.id = uniqueId;
             el.innerHTML = `
+                <div class="particle-container"></div>
                 <div class="card-icon">${roleContext.icons[cardInfo.icon] || ''}</div>
                 <div class="card-name">${cardInfo.name}</div>
                 <div class="card-desc">${cardInfo.description}</div>
@@ -1210,7 +1258,7 @@
                                 else { blue += bonus; tempLog += `   -> 作用于随机颜色: 💙+${bonus}\n`; }
                             }
                         } else if (name === "熟练锻造") {
-                            let bonus = 3 + heatingUpBuff;
+                            let bonus = 4 + heatingUpBuff;
                             if (skilledForgingPrimed) { bonus += 3; tempLog += `   -> 触发熟练锻造连击, 基础+3\n`; } 
                             else { skilledForgingPrimed = true; tempLog += `   -> 首次打出熟练锻造, 后续的将获得强化!\n`; }
                             if (heatingUpBuff > 0) tempLog += `   -> 升温效果, 基础+${heatingUpBuff}\n`;
