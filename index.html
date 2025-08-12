@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>职业模拟器 - 锻造、烹饪与炼金</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
         :root {
-            --bg-color: #1a1a2e;
-            --surface-color: #16213e;
-            --primary-color: #0f3460;
-            --primary-dark: #e94560;
-            --accent-color: #5372f0;
-            --text-color: #e0f2f1;
-            --text-muted: #a7c5c5;
-            --craftsman-glow: rgba(233, 69, 96, 0.7);
-            --rarity-rare-bg: #5372f0; 
-            --rarity-rare-plus-bg: linear-gradient(120deg, #5372f0, #a594f9, #5372f0);
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --primary-color: #0d2636;
+            --primary-dark: #ff8c00;
+            --accent-color: #3081f7;
+            --text-color: #c9d1d9;
+            --text-muted: #8b949e;
+            --craftsman-glow: rgba(255, 140, 0, 0.7);
+            --rarity-rare-bg: #3081f7; 
+            --rarity-rare-plus-bg: linear-gradient(120deg, #3081f7, #58a6ff, #3081f7);
             --rarity-elite-bg: #a594f9;
             --rarity-elite-plus-bg: linear-gradient(120deg, #a594f9, #ff7e5f, #a594f9);
-            --score-0: #e94560;
-            --score-1: #859900;
-            --score-2: #268bd2;
-            --score-3: #d33682;
-            --score-4: #b58900;
+            --score-0: #f85149;
+            --score-1: #3fb950;
+            --score-2: #58a6ff;
+            --score-3: #db61a2;
+            --score-4: #d29922;
         }
 
         body {
-            font-family: 'Nunito', 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
+            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
@@ -61,14 +61,14 @@
         }
 
         .spark {
-            background-color: #ff8484;
+            background-color: var(--primary-dark);
             animation-name: rise;
         }
         
         .bubble {
-            background-color: rgba(131, 148, 150, 0.2);
+            background-color: rgba(139, 148, 158, 0.2);
             animation-name: bubble-rise;
-            border: 1px solid rgba(131, 148, 150, 0.3);
+            border: 1px solid rgba(139, 148, 158, 0.3);
         }
 
         .alchemy-particle {
@@ -99,35 +99,34 @@
         .container {
             width: 100%;
             max-width: 1100px;
-            background: rgba(22, 33, 62, 0.7);
+            background: rgba(22, 27, 34, 0.7);
             backdrop-filter: blur(12px);
-            border-radius: 24px;
+            border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 25px rgba(233, 69, 96, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(48, 129, 247, 0.2);
+            border: 1px solid #30363d;
             max-height: 95vh;
             overflow-y: auto;
         }
 
         h1, h2, h3 {
             text-align: center;
-            color: var(--primary-dark);
-            text-shadow: 0 0 10px var(--craftsman-glow);
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(48, 129, 247, 0.7);
         }
         
         h1 {
             font-size: 2.8em;
             margin-bottom: 25px;
-            font-family: 'ZCOOL KuaiLe', sans-serif;
             animation: glow 2s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px #e94560, 0 0 20px #e94560, 0 0 30px #e94560;
+                text-shadow: 0 0 10px #3081f7, 0 0 20px #3081f7, 0 0 30px #3081f7;
             }
             to {
-                text-shadow: 0 0 20px #e94560, 0 0 30px #ff7e5f, 0 0 40px #ff7e5f;
+                text-shadow: 0 0 20px #3081f7, 0 0 30px #58a6ff, 0 0 40px #58a6ff;
             }
         }
         
@@ -135,7 +134,7 @@
             font-size: 1.4em;
             color: var(--text-color);
             text-shadow: none;
-            border-bottom: 1px solid var(--primary-color);
+            border-bottom: 1px solid #30363d;
             padding-bottom: 8px;
             margin-bottom: 15px;
         }
@@ -150,7 +149,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 15px;
         }
         .main-title-container h1 {
@@ -162,25 +161,26 @@
         .switch-role-button {
             background: var(--primary-color);
             color: var(--text-color);
-            border: 1px solid var(--primary-color);
+            border: 1px solid #30363d;
             padding: 8px 16px;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
             font-weight: 600;
         }
         .switch-role-button:hover {
-            background: var(--primary-dark);
+            background: var(--accent-color);
             color: #fff;
-            border-color: var(--primary-dark);
+            border-color: var(--accent-color);
         }
 
         #role-selection-screen { text-align: center; }
         .role-options { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
         .role-card {
-            background: var(--surface-color); padding: 30px; border-radius: 20px;
+            background: var(--surface-color); padding: 30px; border-radius: 16px;
             cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; width: 200px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid #30363d;
         }
         .role-card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.3); }
         .role-icon { font-size: 4em; }
@@ -192,24 +192,24 @@
         .right-panel { flex: 2; min-width: 450px; }
 
         .setup-section {
-            background: rgba(15, 52, 96, 0.5); padding: 20px; border-radius: 16px;
-            margin-bottom: 20px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--surface-color); padding: 20px; border-radius: 16px;
+            margin-bottom: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+            border: 1px solid #30363d;
         }
         
         .recipe-selector label { font-size: 1.2em; margin-bottom: 10px; display: block; font-weight: 600; }
 
         .custom-select-container { position: relative; }
         #custom-select-trigger {
-            width: 100%; padding: 12px; border-radius: 12px; background-color: var(--surface-color);
-            color: var(--text-color); border: 1px solid var(--primary-color); font-size: 1em;
+            width: 100%; padding: 12px; border-radius: 8px; background-color: var(--primary-color);
+            color: var(--text-color); border: 1px solid #30363d; font-size: 1em;
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
         }
         #custom-select-trigger::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s ease; }
         .custom-select-container.open #custom-select-trigger::after { transform: rotate(180deg); }
         #custom-select-options {
             position: absolute; top: 105%; left: 0; width: 100%; background-color: var(--surface-color);
-            border: 1px solid var(--primary-color); border-radius: 12px; z-index: 10;
+            border: 1px solid #30363d; border-radius: 8px; z-index: 10;
             overflow: hidden; transform-origin: top; transition: transform 0.3s ease, opacity 0.3s ease;
             transform: scaleY(0); opacity: 0;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -733,7 +733,7 @@
                     "烤薄饼": { slots: 4, description: "每次生产可配置4张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [15, 25], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
                     "吐司": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "稀有+", rarityKey: "rare-plus", ratings: [101, 159], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
                     "香辣面包": { slots: 5, description: "每次生产可配置5张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [372, 448, 635], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "调味"], recommended: 'high' } },
-                    "盐渍葡萄干": { slots: 4, description: "切割始终获得最高分，每次生产可配4张卡牌", special: "max_cutting", difficulty: "精英", rarityKey: "elite", ratings: [344, 440, 462, 647], strategies: { high: ["切割", "切割", "切割", "调味"], stable: ["慢炖", "火候掌握", "切割", "切割"], burst: ["切割", "切割", "切割", "调味"], recommended: 'burst' } },
+                    "盐渍葡萄干": { slots: 4, description: "切割始终获得最高分，每次生产可配4张卡牌", special: "max_cutting", difficulty: "精英", rarityKey: "elite", ratings: [344, 440, 462, 647], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握"], burst: ["切割", "切割", "切割", "调味"], recommended: 'high' } },
                     "葡萄果醋": { slots: 6, description: "每次生产可配置6张卡牌", difficulty: "精英", rarityKey: "elite", ratings: [1070, 1270, 1420, 1740], strategies: { high: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "火候掌握"], stable: ["慢炖", "慢炖", "火候掌握", "火候掌握", "切割", "切割"], burst: ["慢炖", "慢炖", "火候掌握", "火候掌握", "火候掌握", "调味"], recommended: 'high' } }
                 },
                 icons: { fire: `<svg viewBox="0 0 24 24"><path d="M13.04 1.23C11.93 2.66 11.25 4.5 11.25 6.5c0 3.59 2.91 6.5 6.5 6.5 1.08 0 2.09-.26 3-.73-.23 3.3-2.11 6.2-4.75 7.73-3.21 1.88-7.29 1.15-9.64-1.2-2.35-2.35-3.08-6.43-1.2-9.64C7.04 6.78 9.94 4.9 13.24 4.67c-.2-.93-.4-1.87-.2-2.73.08-.34.2-.67.4-.91z"/></svg>`, knife: `<svg viewBox="0 0 24 24"><path d="M14.29,1.71a1,1,0,0,0-1.41,0L3.29,11.29a1,1,0,0,0,0,1.41l8,8a1,1,0,0,0,1.41,0l9.59-9.59a1,1,0,0,0,0-1.41ZM12.59,19.59L5.41,12.41,14.71,3.12l7.17,7.17Z"/></svg>`, spark: `<svg viewBox="0 0 24 24"><path d="M12 2l2.35 7.16h7.65l-6.18 4.48 2.36 7.16-6.18-4.48-6.18 4.48 2.36-7.16-6.18-4.48h7.65L12 2z"/></svg>`, pot: `<svg viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/></svg>` },
@@ -1250,7 +1250,7 @@
                             } else if (focusNext) {
                                 purple += bonus;
                                 blue += bonus;
-                                tempLog += `   -> 💥 聚能生效! 作用于双色: 💜+${bonus}, 💙+${bonus}\n`;
+                                tempLog += `   -> � 聚能生效! 作用于双色: 💜+${bonus}, 💙+${bonus}\n`;
                                 focusNext = false;
                             } else {
                                 const target = Math.random() < 0.5 ? 'purple' : 'blue';
